@@ -1,0 +1,21 @@
+<div class="row">" "</div>
+<div class="row">
+    <div class="col-md-12">
+        <h3>Users List</h3>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <tr class="success">
+        <th>Email</th>
+        <th>Name</th>
+        <th>Tel</th>
+        <th>Nationality</th>
+    </tr>
+    <tr *ngFor="#user of users">
+        <td>{{user.email}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.tel}}</td>
+        <td>{{user.nationality}}</td>
+    </tr>
+</table>

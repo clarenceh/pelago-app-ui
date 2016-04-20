@@ -1,0 +1,7 @@
+build
+.idea
+node_modules
+.DS_Store
+typings
+app/**/*.js
+app/**/*.map
