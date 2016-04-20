@@ -2,6 +2,7 @@ import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
 import {UserListComponent} from '../user-list/user-list';
 import {NavbarComponent} from '../navbar/navbar';
+import {FooterComponent} from '../footer/footer';
 import {AppConfig} from '../../config/app-config';
 import {UserService} from '../../services/user.service';
 
@@ -12,7 +13,8 @@ import {UserService} from '../../services/user.service';
     providers: [AppConfig, UserService],
     directives: [
         ROUTER_DIRECTIVES,
-        NavbarComponent]
+        NavbarComponent,
+        FooterComponent]
 })
 @RouteConfig([
     {
