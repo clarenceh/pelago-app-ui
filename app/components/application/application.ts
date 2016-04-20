@@ -3,6 +3,7 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
 import {UserListComponent} from '../user-list/user-list';
 import {NavbarComponent} from '../navbar/navbar';
 import {FooterComponent} from '../footer/footer';
+import {UserRegComponent} from '../user-reg/user-reg';
 import {AppConfig} from '../../config/app-config';
 import {UserService} from '../../services/user.service';
 
@@ -17,12 +18,9 @@ import {UserService} from '../../services/user.service';
         FooterComponent]
 })
 @RouteConfig([
-    {
-        path: '/home',
-        name: 'Home',
-        component: UserListComponent,
-        useAsDefault: true
-    }
+    {path: '/home', name: 'Home', component: UserListComponent, useAsDefault: true},
+    {path: '/login', name: 'Login', component: UserRegComponent},
+    {path: '/register', name: 'Register', component: UserRegComponent}
 ])
 export class AppComponent { 
 }
