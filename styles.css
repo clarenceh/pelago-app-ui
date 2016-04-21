@@ -1,4 +1,5 @@
 /* Master Styles */
+/*
 h1 {
   color: #369; 
   font-family: Arial, Helvetica, sans-serif;   
@@ -15,4 +16,13 @@ body {
 body, input[text], button { 
   color: #888; 
   font-family: Cambria, Georgia; 
+}
+*/
+
+.ng-valid[required] {
+    border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid {
+    border-left: 5px solid #a94442; /* red */
 }

@@ -19,7 +19,19 @@ import {
 export class UserRegComponent implements OnInit {
     
     private apiUrl: string;
-    
+
+    // Indicates whether this form is active
+    active = true;
+
+    // Indicates whether submitting is in progress
+    submitting = false;
+
+    // Indicates where user reg was successful
+    success = false;
+
+    // Indicates where email was already taken
+    emailTaken = false;
+
     user = new User();
     
     nationalities: string[];
@@ -38,13 +50,53 @@ export class UserRegComponent implements OnInit {
     }
     
     onUserReg() {
+
+        // Inactivate the form
+        this.active = false;
+
+        this.submitting = true;
+
         console.log("On user registration");
         console.log("User input: " + JSON.stringify(this.user));
-        
+
         // Submit user info to backend API
         this._userService.addUser(this.user).subscribe( res => {
-            console.log("User reg success: " + JSON.stringify(res));     
+            console.log("User reg success: " + JSON.stringify(res));
+
+            this.submitting = false;
+            this.success = true;
+
+            // Navigate to Home
+            let link = ['Home'];
+
+            // Show success message for 2 seconds and navigate to user list view
+            setTimeout(function(self){self._router.navigate(link);}, 2000, this);
+
         });
     }
+
+    onEmailBlur(emailValid: boolean) {
+
+        console.log("On email blur: " + this.user.email);
+        console.log("Email valid: " + emailValid);
+        if (emailValid) {
+
+            // Check email existence from server
+            console.log("Check email existence");
+
+            this._userService.checkEmailExist(this.user.email).subscribe(
+                res => {
+                    console.log("User email exist");
+                    this.emailTaken = true;
+                },
+                err => {
+                    console.log("User email not exist");
+                    this.emailTaken = false;
+                }
+            )
+        }
+    }
+
+    get diagnostic() { return JSON.stringify(this.user); }
     
 }

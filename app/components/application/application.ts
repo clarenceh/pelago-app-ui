@@ -19,7 +19,6 @@ import {UserService} from '../../services/user.service';
 })
 @RouteConfig([
     {path: '/home', name: 'Home', component: UserListComponent, useAsDefault: true},
-    {path: '/login', name: 'Login', component: UserRegComponent},
     {path: '/register', name: 'Register', component: UserRegComponent}
 ])
 export class AppComponent { 

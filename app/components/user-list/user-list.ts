@@ -11,7 +11,9 @@ import {User, UserService} from '../../services/user.service';
 export class UserListComponent implements OnInit {
     
     private apiUrl: string;
-    
+
+    usersLoaded = false;
+
     users: User[];
     
     constructor(
@@ -27,6 +29,7 @@ export class UserListComponent implements OnInit {
         this._userService.getUserList().subscribe( res => {
             console.log("Response: " + JSON.stringify(res));
             this.users = res;
+            this.usersLoaded = true;
         });
     }
 }

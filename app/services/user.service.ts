@@ -18,10 +18,12 @@ export class UserService {
     
     private apiBaseUrl: string;
     private apiUserUrl: string;
+    private apiCheckEmailUrl: string;
     
     constructor(private _http: Http) {
         this.apiBaseUrl = AppConfig.REST_API_BASE_URL;
         this.apiUserUrl = this.apiBaseUrl + '/user';
+        this.apiCheckEmailUrl = this.apiBaseUrl + '/checkemail/';
     }
     
     getUserList(): Observable<User[]> {
@@ -40,5 +42,14 @@ export class UserService {
             .post(this.apiUserUrl, JSON.stringify(user), options)
             .map(response => response.json());
     }
-    
+
+    checkEmailExist(email: String): Observable<number> {
+        console.log("Checking user email existence for email: " + email);
+
+        let apiEndpoint = this.apiCheckEmailUrl + email;
+
+        return this._http
+            .get(apiEndpoint)
+            .map(response => response.status);
+    }
 }
