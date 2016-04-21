@@ -90,6 +90,7 @@ export class UserRegComponent implements OnInit {
                     this.emailTaken = true;
                 },
                 err => {
+                    // TODO - should check the response code is 404
                     console.log("User email not exist");
                     this.emailTaken = false;
                 }

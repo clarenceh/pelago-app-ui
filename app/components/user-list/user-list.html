@@ -23,11 +23,13 @@
         <th>Name</th>
         <th>Tel</th>
         <th>Nationality</th>
+        <th>Action</th>
     </tr>
     <tr *ngFor="#user of users">
         <td>{{user.email}}</td>
         <td>{{user.name}}</td>
         <td>{{user.tel}}</td>
         <td>{{user.nationality}}</td>
+        <td><button type="button" class="btn btn-danger" (click)="onReqUserDeletion(user.email)">Request Deletion</button></td>
     </tr>
 </table>

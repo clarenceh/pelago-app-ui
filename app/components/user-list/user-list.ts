@@ -32,4 +32,8 @@ export class UserListComponent implements OnInit {
             this.usersLoaded = true;
         });
     }
+
+    onReqUserDeletion(email: string) {
+        console.log("Request deletion for email: " + email);
+    }
 }
