@@ -35,5 +35,6 @@ export class UserListComponent implements OnInit {
 
     onReqUserDeletion(email: string) {
         console.log("Request deletion for email: " + email);
+        this._router.navigate(['UserDeleteReq', {email: email}]);
     }
 }

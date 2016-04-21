@@ -6,12 +6,14 @@ import {FooterComponent} from '../footer/footer';
 import {UserRegComponent} from '../user-reg/user-reg';
 import {AppConfig} from '../../config/app-config';
 import {UserService} from '../../services/user.service';
+import {UserDeleteRequestService} from '../../services/user-delete-request.service';
+import {UserDeleteRequestComponent} from '../user-delete-request/user-delete-request';
 
 @Component({
     selector: 'pelago-app',
     templateUrl: 'app/components/application/application.html',
     styleUrls: ['app/components/application/application.css'],
-    providers: [AppConfig, UserService],
+    providers: [AppConfig, UserService, UserDeleteRequestService],
     directives: [
         ROUTER_DIRECTIVES,
         NavbarComponent,
@@ -19,7 +21,8 @@ import {UserService} from '../../services/user.service';
 })
 @RouteConfig([
     {path: '/home', name: 'Home', component: UserListComponent, useAsDefault: true},
-    {path: '/register', name: 'Register', component: UserRegComponent}
+    {path: '/register', name: 'Register', component: UserRegComponent},
+    {path: '/userdeletereq/:email', name: 'UserDeleteReq', component: UserDeleteRequestComponent}
 ])
 export class AppComponent { 
 }

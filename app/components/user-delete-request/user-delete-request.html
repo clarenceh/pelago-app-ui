@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Request for User Deletion</h3>
+        </div>
+    </div>
+</div>
+
+<div class="container bg-info">
+    <div class="row" *ngIf="submitting">
+        <div class="form-group">
+            <div class="col-md-1">
+                <i class="fa fa-spinner fa-spin fa-3x fa-fw margin-bottom"></i>
+            </div>
+            <div class="col-md-6">
+                <h4>Submitting request</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container bg-success">
+    <div class="row" *ngIf="success">
+        <div class="col-md-12">
+            <h4>Request submitted successfully. We will verify with you and perform the deletion accordingly.</h4>
+        </div>
+    </div>
+</div>
+
+<form *ngIf="active" class="form-horizontal"
+      (ngSubmit)="onUserDeleteReq()" #userDeleteReqForm="ngForm">
+
+    <div class="form-group">
+        <label for="email" class="col-sm-2 control-label">Email:</label>
+        <div class="col-sm-6">
+            <input id="email"
+                   class="form-control"
+                   type="email"
+                   [ngModel]="userDeleteRequest.email"
+                   disabled="true">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="comment" class="col-sm-2 control-label">Comment (Optional):</label>
+        <div class="col-sm-6">
+            <textarea id="comment"
+                   class="form-control"
+                   type="text"
+                   rows="4"
+                   maxlength="255"
+                   [(ngModel)]="userDeleteRequest.comment"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary" [disabled]="!userDeleteReqForm.form.valid">Submit</button>
+        </div>
+    </div>
+
+</form>
