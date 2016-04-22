@@ -21,7 +21,7 @@
                 <i class="fa fa-spinner fa-spin fa-3x fa-fw margin-bottom"></i>
             </div>
             <div class="col-md-6">
-                <h4>Submitting form</h4>
+                <h4>Submitting form, please wait</h4>
             </div>
         </div>
     </div>
@@ -35,7 +35,26 @@
     </div>
 </div>
 
-<form *ngIf="active" class="form-horizontal"
+<div *ngIf="submitError" class="container bg-danger">
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Registration failed, please fix the following errors and retry:</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <ol>
+                <li *ngFor="#errorMessage of errorMessages">
+                    {{errorMessage}}
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<br/>
+
+<form class="form-horizontal"
       (ngSubmit)="onUserReg()" #userForm="ngForm">
 
     <div class="form-group">
@@ -47,15 +66,11 @@
                 [(ngModel)]="user.email"
                 ngControl="email"
                 #email="ngForm"
-                minlength="5"
-                autofocus
-                required
-                (blur)="onEmailBlur(email.valid)">
+                minlength="3"
+                maxlength="100"
+                required>
             <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
-                Email is required
-            </div>
-            <div [hidden]="!emailTaken" class="alert alert-danger">
-                Email was taken, please enter another one
+                Email is required, and between 3 to 100 characters
             </div>
         </div>
     </div>
@@ -70,9 +85,10 @@
                 ngControl="password"
                 #password="ngForm"
                 minlength="6"
+                maxlength="20"
                 required>
             <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
-                Password is required, and should have at least 6 alphanumeric characters
+                Password is required, and should have between 6 and 20 alphanumeric characters
             </div>
         </div>
     </div>
@@ -87,10 +103,11 @@
                 ngControl="name"
                 #name="ngForm"
                 minlength="2"
+                maxlength="100"
                 required
                 #spy>
             <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-                Name is required, and should have at least 2 characters
+                Name is required, and should have between 2 and 100 characters
             </div>
         </div>
     </div>  
@@ -101,6 +118,7 @@
             <input id="tel"
                 class="form-control"
                 type="text"
+                max="20"
                 [(ngModel)]="user.tel">
         </div>
     </div> 
@@ -119,7 +137,7 @@
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-primary" [disabled]="!userForm.form.valid || emailTaken">Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!userForm.form.valid || submitting">Submit</button>
         </div>
     </div>
 </form>

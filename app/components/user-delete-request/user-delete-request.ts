@@ -21,7 +21,7 @@ export class UserDeleteRequestComponent implements OnInit {
 
     userDeleteRequest = new UserDeleteRequest();
 
-    // Indicates whether this form is active
+    // Indicate this form is active or not
     active = true;
 
     // Indicates whether submitting is in progress
@@ -41,10 +41,7 @@ export class UserDeleteRequestComponent implements OnInit {
     }
 
     onUserDeleteReq() {
-
-        // Inactivate the form
         this.active = false;
-
         this.submitting = true;
 
         console.log("Submit user delete request: " + JSON.stringify(this.userDeleteRequest));

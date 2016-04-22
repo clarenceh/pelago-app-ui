@@ -11,6 +11,7 @@ export class UserDeleteRequest {
     public id: number;
     public email: string;
     public comment: string;
+    public created_at: string;
 }
 
 @Injectable()
@@ -24,6 +25,11 @@ export class UserDeleteRequestService {
     ) {
         this.apiBaseUrl = AppConfig.REST_API_BASE_URL;
         this.apiUserDeleteReqUrl = this.apiBaseUrl + '/userdeletereq';
+    }
+
+    getUserDeleteRequestList(): Observable<UserDeleteRequest[]> {
+        return this._http.get(this.apiUserDeleteReqUrl)
+            .map(response => response.json());
     }
 
     submitUserDeleteRequest(userDeleteRequest: UserDeleteRequest): Observable<UserDeleteRequest> {

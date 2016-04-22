@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-12">
+        <h3>User Delete Requests List</h3>
+    </div>
+</div>
+
+<div class="container bg-info">
+    <div class="row" *ngIf="!userDeleteRequestsLoaded">
+        <div class="form-group">
+            <div class="col-md-1">
+                <i class="fa fa-spinner fa-spin fa-3x fa-fw margin-bottom"></i>
+            </div>
+            <div class="col-md-6">
+                <h4>Loading user delete requests list</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table *ngIf="userDeleteRequestsLoaded" class="table table-striped">
+    <tr class="success">
+        <th>Email</th>
+        <th>Comment</th>
+        <th>Create At</th>
+    </tr>
+    <tr *ngFor="#userDeleteRequest of userDeleteRequests">
+        <td>{{userDeleteRequest.email}}</td>
+        <td>{{userDeleteRequest.comment}}</td>
+        <td>{{userDeleteRequest.created_at}}</td>
+    </tr>
+</table>

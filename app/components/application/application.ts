@@ -8,6 +8,7 @@ import {AppConfig} from '../../config/app-config';
 import {UserService} from '../../services/user.service';
 import {UserDeleteRequestService} from '../../services/user-delete-request.service';
 import {UserDeleteRequestComponent} from '../user-delete-request/user-delete-request';
+import {UserDeleteRequestListComponent} from '../user-delete-request-list/user-delete-request-list';
 
 @Component({
     selector: 'pelago-app',
@@ -22,6 +23,7 @@ import {UserDeleteRequestComponent} from '../user-delete-request/user-delete-req
 @RouteConfig([
     {path: '/home', name: 'Home', component: UserListComponent, useAsDefault: true},
     {path: '/register', name: 'Register', component: UserRegComponent},
+    {path: '/userdeletereq', name: 'UserDeleteReqList', component: UserDeleteRequestListComponent},
     {path: '/userdeletereq/:email', name: 'UserDeleteReq', component: UserDeleteRequestComponent}
 ])
 export class AppComponent { 

@@ -4,6 +4,7 @@ Testing App for Pelago - Frontend
 Build with:
 - Angular 2 (Beta)
 - TypeScript
+- Boostrap CSS
 
 Application Information:
 - Name: pelago-app-ui
